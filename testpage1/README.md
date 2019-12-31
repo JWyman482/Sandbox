@@ -1,4 +1,7 @@
 # testpage1
+Test page for playing around with vue components.
+
+
 
 ## Project setup
 ```
