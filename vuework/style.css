@@ -1,0 +1,10 @@
+.nav-bar {
+    height: 10%;
+    background-color: aquamarine;
+}
+
+.product {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    display: flex;
+}
