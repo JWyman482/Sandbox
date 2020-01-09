@@ -2,7 +2,8 @@ var app = new Vue({
     el: '#app',
     data: {
         product: 'socks',
-        description: 'white socks'
+        description: 'white socks',
+        image: '../../../../Pictures/Camera Roll/Me and Ella.jpg'
     }
 });
 

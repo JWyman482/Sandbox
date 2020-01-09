@@ -8,3 +8,11 @@
     text-align: center;
     display: flex;
 }
+
+.product-image {
+    width: 200px;
+}
+
+img {
+    width: 100%;
+}
