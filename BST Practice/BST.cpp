@@ -14,7 +14,7 @@ bool BST::add(int value)
    cout << "Adding " << value << endl;
    cout << "---------------\n";
    
-   Node* spot = searchHelper(root, value);
+   Node* spot = findHelper(root, value);
 
    // Case: Empty Tree
    if (spot == nullptr) {   
@@ -30,14 +30,14 @@ bool BST::add(int value)
    return true;
 }
 
-bool BST::search(int value) 
+bool BST::find(int value) 
 {
    cout << endl;
    cout << "---------------\n";
    cout << "Searching for " << value << endl;
    cout << "---------------\n";
 
-   if (searchHelper(root, value, true)->m_value != value) {
+   if (findHelper(root, value, true)->m_value != value) {
       cout << "---------------\n"; 
       cout << "Item not found.\n";
       cout << "---------------\n\n";
@@ -63,12 +63,31 @@ bool BST::remove(int value)
 
 bool BST::clearTree()
 {
+   deleteHelper(root);
    return false;
 }
 
 bool BST::isEmpty()
 {
-   return false;
+   return root == nullptr;
+}
+
+int BST::max()
+{
+   int tmp = findMax(root)->m_value;
+   cout << "\n---------------\n";
+   cout << "Max: " << tmp << endl;
+   cout << "---------------\n";
+   return tmp;
+}
+
+int BST::min()
+{
+   int tmp = findMin(root)->m_value;
+   cout << "\n---------------\n";
+   cout << "Min: " << tmp << endl;
+   cout << "---------------\n";
+   return tmp;
 }
 
 // Performs postfix delete (L, R, Root)
@@ -102,7 +121,7 @@ Node* BST::deleteHelper(Node* root)
 
 // Returns nullptr for empty trees, and a pointer to the 
 // node where the value is, or the node above where the item should be.
-Node* BST::searchHelper(Node* root, int value, bool printTree)
+Node* BST::findHelper(Node* root, int value, bool printTree)
 {
    // Case: Empty Tree or Value Found
    if (root == nullptr || root->m_value == value) return root;
@@ -110,10 +129,10 @@ Node* BST::searchHelper(Node* root, int value, bool printTree)
    if (printTree) print(root);
    
    // Case: Left Subtree
-   if (value <= root->m_value && root->left != nullptr) return searchHelper(root->left, value, printTree);
+   if (value <= root->m_value && root->left != nullptr) return findHelper(root->left, value, printTree);
       
    // Case: Right Subtree
-   if (value > root->m_value && root->right != nullptr) return searchHelper(root->right, value, printTree);
+   if (value > root->m_value && root->right != nullptr) return findHelper(root->right, value, printTree);
 
    // Case: Not found/next subtree to examine is nullptr
    return root;
@@ -167,7 +186,7 @@ Node* BST::removeHelper(Node* root, int value) {
       // If the node has two children, find largest (maxRight) on
       // the left subtree, copy its value into the tgt Node, then
       // remove the original.
-      Node* tmp = maxRight(root->left);
+      Node* tmp = findMax(root->left);
       root->m_value = tmp->m_value;
       root->left = removeHelper(root->left, tmp->m_value);
 
@@ -176,7 +195,7 @@ Node* BST::removeHelper(Node* root, int value) {
    return root;
 }
 
-Node* BST::maxRight(Node* root) {
+Node* BST::findMax(Node* root) {
    Node* curr = root;
    
    while (curr && curr->right != nullptr) {
@@ -184,6 +203,18 @@ Node* BST::maxRight(Node* root) {
    }
 
    // Curr will be the right-most node    
+   // in the tree starting at root.
+   return curr;
+}
+
+Node* BST::findMin(Node* root) {
+   Node* curr = root;
+
+   while (curr && curr->left != nullptr) {
+      curr = curr->left;
+   }
+
+   // Curr will be the left-most node    
    // in the tree starting at root.
    return curr;
 }

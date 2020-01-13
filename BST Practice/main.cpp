@@ -7,17 +7,17 @@ int main() {
 
    BST T;
    T.add(5);
-   T.search(5);
+   T.find(5);
    T.add(3);
    T.add(4);
-   T.search(4);
+   T.find(4);
    T.add(2);
    T.add(1);
    T.add(6);
    T.add(8);
    T.add(7);
-   T.search(1);
-   T.search(7);
+   T.find(1);
+   T.find(7);
 
    /*
                  5
@@ -32,11 +32,11 @@ int main() {
 
    // Testing duplicates w/add
    T.add(1);
-   T.search(1);
+   T.find(1);
    
    // Testing remove: Leaf
    T.remove(7);
-   T.search(7);
+   T.find(7);
    /*
                  5
                 / \
@@ -49,18 +49,19 @@ int main() {
 
    // Testing remove: Node w/Left Subtree
    T.remove(2);
-   T.search(2);
-   /*
-              5
-             / \
-            3   6
-           / \   \
-          1   4   8
+   T.find(2);
+   /*                n
+                /         \
+               5           n
+             /   \       /   \   
+            3     6     n     n
+           / \   / \   / \   / \
+          1   4 n   8 n   n n   n   
    */
 
    // Testing remove: Node w/Right Subtree
    T.remove(6);
-   T.search(6);
+   T.find(6);
    /*
               5
              / \
@@ -71,7 +72,7 @@ int main() {
 
    // Testing remove: Node w/Both Subtrees
    T.remove(3);
-   T.search(3);
+   T.find(3);
    /*
            5
           / \
@@ -79,5 +80,8 @@ int main() {
           \   
            4   
    */
+
+   T.max(); // 8
+   T.min(); // 1
 
 }
