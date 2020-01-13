@@ -52,8 +52,23 @@ bool BST::search(int value)
 
 bool BST::remove(int value)
 {
-   Node* tmp = searchHelper(root, value, true);
+   cout << "\n---------------\n";
+   cout << "Removing " << value << endl;
+   cout << "---------------\n";
+
+   if (removeHelper(root, value) == nullptr) return false;
    return true;
+
+}
+
+bool BST::clearTree()
+{
+   return false;
+}
+
+bool BST::isEmpty()
+{
+   return false;
 }
 
 // Performs postfix delete (L, R, Root)
@@ -84,7 +99,6 @@ Node* BST::deleteHelper(Node* root)
 
    return nullptr;
 }
-
 
 // Returns nullptr for empty trees, and a pointer to the 
 // node where the value is, or the node above where the item should be.
@@ -124,4 +138,52 @@ void BST::print(Node* root) {
       cout << "       n" :
       cout << "       " << root->right->m_value;
    cout << endl;
+}
+
+Node* BST::removeHelper(Node* root, int value) {
+   // Case: Empty Tree or Value Not Found
+   if (root == nullptr) return root;
+
+   // Case: Value is in left subtree
+   if (value < root->m_value) root->left = removeHelper(root->left, value);
+
+   // Case: Value is in right subtree
+   else if (value > root->m_value) root->right = removeHelper(root->right, value);
+
+   // Case: Found the value in the tree
+   else {
+      // If the node is a leaf or only has one child
+      if (root->left == nullptr) {
+         Node* tmp = root->right;
+         delete root;
+         return tmp;
+      }
+      else if (root->right == nullptr) {
+         Node* tmp = root->left;
+         delete root;
+         return tmp;
+      }
+      
+      // If the node has two children, find largest (maxRight) on
+      // the left subtree, copy its value into the tgt Node, then
+      // remove the original.
+      Node* tmp = maxRight(root->left);
+      root->m_value = tmp->m_value;
+      root->left = removeHelper(root->left, tmp->m_value);
+
+   }
+
+   return root;
+}
+
+Node* BST::maxRight(Node* root) {
+   Node* curr = root;
+   
+   while (curr && curr->right != nullptr) {
+      curr = curr->right;
+   }
+
+   // Curr will be the right-most node    
+   // in the tree starting at root.
+   return curr;
 }
