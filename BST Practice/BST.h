@@ -9,24 +9,27 @@
 
 using namespace std;
 
+template<class type>
 class BST {
 public:
    ~BST();
-   bool add(int value);
-   bool find(int value);
-   bool remove(int value);
+   bool add(type value);
+   bool find(type value);
+   bool remove(type value);
    bool clearTree();
    bool isEmpty();
-   int max();
-   int min();
+   type max();
+   type min();
 
 private:
-   Node* root = nullptr;
-   void print(Node* root);
-   Node* removeHelper(Node* root, int value);
-   Node* deleteHelper(Node* root);
-   Node* findHelper(Node* root, int value, bool printTree = false);
-   Node* getNewNode(int data);
-   Node* findMax(Node* root);
-   Node* findMin(Node* root);
+   Node<type>* root = nullptr;
+   void print(Node<type>* root);
+   Node<type>* removeHelper(Node<type>* root, type value);
+   Node<type>* deleteHelper(Node<type>* root);
+   Node<type>* findHelper(Node<type>* root, type value, bool printTree = false);
+   Node<type>* getNewNode(type data);
+   Node<type>* findMax(Node<type>* root);
+   Node<type>* findMin(Node<type>* root);
 };
+
+#include "BST.cpp"

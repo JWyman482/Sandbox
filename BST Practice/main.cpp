@@ -5,7 +5,7 @@ using namespace std;
 
 int main() {
 
-   BST T;
+   BST<int> T;
    T.add(5);
    T.find(5);
    T.add(3);

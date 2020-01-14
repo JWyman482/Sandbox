@@ -3,18 +3,20 @@
 
 using namespace std;
 
-BST::~BST() 
+template<class type>
+BST<type>::~BST() 
 {
    deleteHelper(root);
 }
 
-bool BST::add(int value) 
+template<class type>
+bool BST<type>::add(type value) 
 {
    cout << "\n---------------\n";
    cout << "Adding " << value << endl;
    cout << "---------------\n";
    
-   Node* spot = findHelper(root, value);
+   Node<type>* spot = findHelper(root, value);
 
    // Case: Empty Tree
    if (spot == nullptr) {   
@@ -30,7 +32,8 @@ bool BST::add(int value)
    return true;
 }
 
-bool BST::find(int value) 
+template<class type>
+bool BST<type>::find(type value) 
 {
    cout << endl;
    cout << "---------------\n";
@@ -50,7 +53,8 @@ bool BST::find(int value)
    return true;
 }
 
-bool BST::remove(int value)
+template<class type>
+bool BST<type>::remove(type value)
 {
    cout << "\n---------------\n";
    cout << "Removing " << value << endl;
@@ -61,29 +65,33 @@ bool BST::remove(int value)
 
 }
 
-bool BST::clearTree()
+template<class type>
+bool BST<type>::clearTree()
 {
    deleteHelper(root);
    return false;
 }
 
-bool BST::isEmpty()
+template<class type>
+bool BST<type>::isEmpty()
 {
    return root == nullptr;
 }
 
-int BST::max()
+template<class type>
+type BST<type>::max()
 {
-   int tmp = findMax(root)->m_value;
+   type tmp = findMax(root)->m_value;
    cout << "\n---------------\n";
    cout << "Max: " << tmp << endl;
    cout << "---------------\n";
    return tmp;
 }
 
-int BST::min()
+template<class type>
+type BST<type>::min()
 {
-   int tmp = findMin(root)->m_value;
+   type tmp = findMin(root)->m_value;
    cout << "\n---------------\n";
    cout << "Min: " << tmp << endl;
    cout << "---------------\n";
@@ -91,7 +99,8 @@ int BST::min()
 }
 
 // Performs postfix delete (L, R, Root)
-Node* BST::deleteHelper(Node* root) 
+template<class type>
+Node<type>* BST<type>::deleteHelper(Node<type>* root) 
 {
    // Case: Empty Tree
    if (root == nullptr) return root;
@@ -121,7 +130,8 @@ Node* BST::deleteHelper(Node* root)
 
 // Returns nullptr for empty trees, and a pointer to the 
 // node where the value is, or the node above where the item should be.
-Node* BST::findHelper(Node* root, int value, bool printTree)
+template<class type>
+Node<type>* BST<type>::findHelper(Node<type>* root, type value, bool printTree)
 {
    // Case: Empty Tree or Value Found
    if (root == nullptr || root->m_value == value) return root;
@@ -138,13 +148,15 @@ Node* BST::findHelper(Node* root, int value, bool printTree)
    return root;
 }
 
-Node* BST::getNewNode(int value) {
-   Node* newNode = new Node();
+template<class type>
+Node<type>* BST<type>::getNewNode(type value) {
+   Node<type>* newNode = new Node<type>();
    newNode->m_value = value;
    return newNode;
 }
 
-void BST::print(Node* root) {
+template<class type>
+void BST<type>::print(Node<type>* root) {
    cout << "Current Node:\n";
    cout << "     " << root->m_value << "    " << endl;
    cout << "  /     \\\n";
@@ -159,7 +171,8 @@ void BST::print(Node* root) {
    cout << endl;
 }
 
-Node* BST::removeHelper(Node* root, int value) {
+template<class type>
+Node<type>* BST<type>::removeHelper(Node<type>* root, type value) {
    // Case: Empty Tree or Value Not Found
    if (root == nullptr) return root;
 
@@ -173,12 +186,12 @@ Node* BST::removeHelper(Node* root, int value) {
    else {
       // If the node is a leaf or only has one child
       if (root->left == nullptr) {
-         Node* tmp = root->right;
+         Node<type>* tmp = root->right;
          delete root;
          return tmp;
       }
       else if (root->right == nullptr) {
-         Node* tmp = root->left;
+         Node<type>* tmp = root->left;
          delete root;
          return tmp;
       }
@@ -186,7 +199,7 @@ Node* BST::removeHelper(Node* root, int value) {
       // If the node has two children, find largest (maxRight) on
       // the left subtree, copy its value into the tgt Node, then
       // remove the original.
-      Node* tmp = findMax(root->left);
+      Node<type>* tmp = findMax(root->left);
       root->m_value = tmp->m_value;
       root->left = removeHelper(root->left, tmp->m_value);
 
@@ -195,8 +208,9 @@ Node* BST::removeHelper(Node* root, int value) {
    return root;
 }
 
-Node* BST::findMax(Node* root) {
-   Node* curr = root;
+template<class type>
+Node<type>* BST<type>::findMax(Node<type>* root) {
+   Node<type>* curr = root;
    
    while (curr && curr->right != nullptr) {
       curr = curr->right;
@@ -207,8 +221,9 @@ Node* BST::findMax(Node* root) {
    return curr;
 }
 
-Node* BST::findMin(Node* root) {
-   Node* curr = root;
+template<class type>
+Node<type>* BST<type>::findMin(Node<type>* root) {
+   Node<type>* curr = root;
 
    while (curr && curr->left != nullptr) {
       curr = curr->left;
