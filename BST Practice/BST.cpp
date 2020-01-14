@@ -1,3 +1,11 @@
+#ifdef _DEBUG
+#define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )
+// Replace _NORMAL_BLOCK with _CLIENT_BLOCK if you want the
+// allocations to be of _CLIENT_BLOCK type
+#else
+#define DBG_NEW new
+#endif
+
 #include <iostream>
 #include "BST.h"
 
@@ -6,7 +14,8 @@ using namespace std;
 template<class type>
 BST<type>::~BST() 
 {
-   deleteHelper(root);
+   
+   root = deleteHelper(root);
 }
 
 template<class type>
@@ -68,8 +77,8 @@ bool BST<type>::remove(type value)
 template<class type>
 bool BST<type>::clearTree()
 {
-   deleteHelper(root);
-   return false;
+   root = deleteHelper(root);
+   return true;
 }
 
 template<class type>
@@ -150,7 +159,7 @@ Node<type>* BST<type>::findHelper(Node<type>* root, type value, bool printTree)
 
 template<class type>
 Node<type>* BST<type>::getNewNode(type value) {
-   Node<type>* newNode = new Node<type>();
+   Node<type>* newNode = DBG_NEW Node<type>();
    newNode->m_value = value;
    return newNode;
 }

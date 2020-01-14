@@ -1,3 +1,8 @@
+#define _CRTDBG_MAP_ALLOC
+
+#include <stdlib.h>
+#include <crtdbg.h>
+
 #include <iostream>
 #include "BST.h"
 
@@ -84,4 +89,8 @@ int main() {
    T.max(); // 8
    T.min(); // 1
 
+   //T.clearTree();
+   T.~BST();
+_CrtDumpMemoryLeaks();
 }
+
