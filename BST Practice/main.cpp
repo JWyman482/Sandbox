@@ -1,28 +1,27 @@
-#define _CRTDBG_MAP_ALLOC
-
-#include <stdlib.h>
-#include <crtdbg.h>
-
+#include <vector>
 #include <iostream>
-#include "BST.h"
+#include "SearchTree.h"
 
 using namespace std;
 
 int main() {
 
-   BST<int> T;
-   T.add(5);
-   T.find(5);
-   T.add(3);
-   T.add(4);
-   T.find(4);
-   T.add(2);
-   T.add(1);
-   T.add(6);
-   T.add(8);
-   T.add(7);
-   T.find(1);
-   T.find(7);
+   vector<int*> arr;
+
+   SearchTree<int> T;
+   T.insert(5);
+   arr.push_back(T.retrieve(5));
+
+   T.insert(3);
+   T.insert(4);
+   arr.push_back(T.retrieve(4));
+   T.insert(2);
+   T.insert(1);
+   T.insert(6);
+   T.insert(8);
+   T.insert(7);
+   arr.push_back(T.retrieve(1));
+   arr.push_back(T.retrieve(7));
 
    /*
                  5
@@ -35,13 +34,13 @@ int main() {
    */
 
 
-   // Testing duplicates w/add
-   T.add(1);
-   T.find(1);
+   // Testing duplicates w/insert
+   T.insert(1);
+   arr.push_back(T.retrieve(1));
    
    // Testing remove: Leaf
    T.remove(7);
-   T.find(7);
+   arr.push_back(T.retrieve(7));
    /*
                  5
                 / \
@@ -54,7 +53,6 @@ int main() {
 
    // Testing remove: Node w/Left Subtree
    T.remove(2);
-   T.find(2);
    /*                n
                 /         \
                5           n
@@ -66,7 +64,7 @@ int main() {
 
    // Testing remove: Node w/Right Subtree
    T.remove(6);
-   T.find(6);
+   
    /*
               5
              / \
@@ -77,7 +75,7 @@ int main() {
 
    // Testing remove: Node w/Both Subtrees
    T.remove(3);
-   T.find(3);
+   
    /*
            5
           / \
@@ -86,11 +84,15 @@ int main() {
            4   
    */
 
-   T.max(); // 8
-   T.min(); // 1
+   //T.max(); // 8
+   //T.min(); // 1
 
    //T.clearTree();
-   T.~BST();
-_CrtDumpMemoryLeaks();
+   //T.~BST();
+
+   for (auto i : arr) {
+      cout << *i << endl;
+   }
+
 }
 
