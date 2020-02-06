@@ -14,7 +14,7 @@ public:
    SearchTree() {};
    SearchTree(const SearchTree& orig);
    ~SearchTree();
-   bool insert(type* ptr);
+   bool insert(const type* ptr);
    bool insert(const type& data);
    bool remove(const type& data);
    void makeEmpty();
@@ -33,7 +33,7 @@ private:
       Node* left = nullptr;
       Node* right = nullptr;
    };
-   Node* root = nullptr;
+   typename Node* root = nullptr;
    bool compHelper(Node* root1, Node* root2);
    Node* copyHelper(Node* root);
    Node* removeHelper(Node* root, const type& data, bool& wasFound);
@@ -41,7 +41,7 @@ private:
    Node* findHelper(Node* root, const type& data) const;
    int heightHelper(Node* root) const;
    Node* printHelper(Node* root, ostream& output) const;
-   Node* getNewNode(type* ptr) const;
+   Node* getNewNode(const type* ptr) const;
    Node* findMax(Node* root) const;
    Node* findMin(Node* root);
 };

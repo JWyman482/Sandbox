@@ -17,10 +17,10 @@ SearchTree<type>::~SearchTree()
 }
 
 template <class type>
-bool SearchTree<type>::insert(type* cPtr) 
+bool SearchTree<type>::insert(const type* cPtr) 
 {
    
-   Node* spot = findHelper(root, *cPtr);
+   SearchTree<type>::Node* spot = findHelper(root, *cPtr);
 
    // Case: Empty Tree
    if (spot == nullptr) {   
@@ -34,7 +34,7 @@ bool SearchTree<type>::insert(type* cPtr)
       return true;
    }
    
-   // Case: Insert new node on left/right subtree as appropriate
+   // Case: Insert new SearchTree<type>::Node on left/right subtree as appropriate
    *cPtr < *spot->m_cPtr ? spot->left = getNewNode(cPtr) : spot->right = getNewNode(cPtr);
    return true;
 }
@@ -42,7 +42,7 @@ bool SearchTree<type>::insert(type* cPtr)
 template<class type>
 bool SearchTree<type>::insert(const type& data)
 {
-   type* temp = data;
+   const type* temp = &data;
    return insert(temp);
 }
 
@@ -67,7 +67,7 @@ template <class type>
 type* SearchTree<type>::retrieve(const type& c) const 
 {
 
-   Node* tmp = findHelper(root, c);
+   SearchTree<type>::Node* tmp = findHelper(root, c);
 
    if (*tmp->m_cPtr == c) 
       return tmp->m_cPtr;
@@ -79,7 +79,7 @@ type* SearchTree<type>::retrieve(const type& c) const
 template <class type>
 int SearchTree<type>::height(const type& c) const
 {
-   Node* tgt = findHelper(root, c);
+   SearchTree<type>::Node* tgt = findHelper(root, c);
    if (*tgt->m_cPtr != c) return -1;
 
    return heightHelper(tgt);
@@ -118,15 +118,15 @@ ostream& operator<<(ostream& output, const SearchTree<type>& tree)
 //*----------------------------- HELPER METHODS----------------------------------------------------
 
 template <class type>
-bool SearchTree<type>::compHelper(Node* root1, Node* root2) {
+bool SearchTree<type>::compHelper(SearchTree<type>::Node* root1, SearchTree<type>::Node* root2) {
 
    // Case: Both traversals land on nullptrs at the same time.
    if (root1 == nullptr && root2 == nullptr) return true;
    
-   // Case: One node has a comparable and one doesn't. 
+   // Case: One SearchTree<type>::Node has a comparable and one doesn't. 
    if ((root1 == nullptr && root2 != nullptr) || (root1 != nullptr && root2 == nullptr)) return false;
 
-   // Case: Each node has a value, but they don't match.
+   // Case: Each SearchTree<type>::Node has a value, but they don't match.
    if (*root1->m_cPtr != *root2->m_cPtr) return false;
 
    // Case: The comparables in both nodes are the same
@@ -139,7 +139,7 @@ bool SearchTree<type>::compHelper(Node* root1, Node* root2) {
 }
 
 template <class type>
-SearchTree<type>::Node* SearchTree<type>::copyHelper(Node* root)
+typename SearchTree<type>::Node* SearchTree<type>::copyHelper(Node* root)
 {
    if (root == nullptr) return root;
    
@@ -153,7 +153,7 @@ SearchTree<type>::Node* SearchTree<type>::copyHelper(Node* root)
 }
 
 template <class type>
-SearchTree<type>::Node* SearchTree<type>::removeHelper(Node* root, const type& c, bool& wasFound) {
+typename SearchTree<type>::Node* SearchTree<type>::removeHelper(SearchTree<type>::Node* root, const type& c, bool& wasFound) {
    
    // Case: Empty Tree or c Not Found
    if (root == nullptr) return root;
@@ -173,28 +173,28 @@ SearchTree<type>::Node* SearchTree<type>::removeHelper(Node* root, const type& c
          return root;
       }
 
-      // Subcase: If the node is a leaf or only has L child
+      // Subcase: If the SearchTree<type>::Node is a leaf or only has L child
       if (root->left == nullptr) {
-         Node* tmp = root->right;
+         SearchTree<type>::Node* tmp = root->right;
       
          wasFound = true;
          delete root;
          return tmp;
       }
 
-      // Subcase: If the node has a R child
+      // Subcase: If the SearchTree<type>::Node has a R child
       if (root->right == nullptr) {
-         Node* tmp = root->left;
+         SearchTree<type>::Node* tmp = root->left;
 
          wasFound = true;
          delete root;
          return tmp;
       }
       
-      // If the node has two children, find largest on
-      // the left subtree, copy its Comparable into the tgt Node, then
+      // If the SearchTree<type>::Node has two children, find largest on
+      // the left subtree, copy its Comparable into the tgt SearchTree<type>::Node, then
       // remove the original.
-      Node* tmp = findMax(root->left);
+      SearchTree<type>::Node* tmp = findMax(root->left);
       *root->m_cPtr = *tmp->m_cPtr;
       root->left = removeHelper(root->left, *tmp->m_cPtr, wasFound);
       wasFound = true;
@@ -206,7 +206,7 @@ SearchTree<type>::Node* SearchTree<type>::removeHelper(Node* root, const type& c
 }
 
 template <class type>
-void SearchTree<type>::deleteHelper(Node* root) 
+void SearchTree<type>::deleteHelper(SearchTree<type>::Node* root) 
 {
    // Case: Empty Tree
    if (root != nullptr) {
@@ -220,7 +220,7 @@ void SearchTree<type>::deleteHelper(Node* root)
 }
 
 template <class type>
-SearchTree<type>::Node* SearchTree<type>::findHelper(Node* root, const type& c) const
+typename SearchTree<type>::Node* SearchTree<type>::findHelper(SearchTree<type>::Node* root, const type& c) const
 {
    // Case: Empty Tree or c Found
    if (root == nullptr || *root->m_cPtr == c) return root;
@@ -236,7 +236,7 @@ SearchTree<type>::Node* SearchTree<type>::findHelper(Node* root, const type& c) 
 }
 
 template <class type>
-int SearchTree<type>::heightHelper(Node* root) const {
+int SearchTree<type>::heightHelper(SearchTree<type>::Node* root) const {
    if (root == nullptr) return 0;
    
    int leftHeight = heightHelper(root->left);
@@ -249,7 +249,7 @@ int SearchTree<type>::heightHelper(Node* root) const {
 }
 
 template <class type>
-SearchTree<type>::Node* SearchTree<type>::printHelper(Node* root, ostream& output) const {
+typename SearchTree<type>::Node* SearchTree<type>::printHelper(SearchTree<type>::Node* root, ostream& output) const {
 
    if (root == nullptr) return root;
 
@@ -262,35 +262,35 @@ SearchTree<type>::Node* SearchTree<type>::printHelper(Node* root, ostream& outpu
 }
 
 template <class type>
-SearchTree<type>::Node* SearchTree<type>::getNewNode(type* cPtr) const {
-   Node* newNode = new Node();
+typename SearchTree<type>::Node* SearchTree<type>::getNewNode(const type* cPtr) const {
+   SearchTree<type>::Node* newNode = new SearchTree<type>::Node();
    newNode->m_cPtr = cPtr;
    newNode->count = 1;
    return newNode;
 }
 
 template <class type>
-SearchTree<type>::Node* SearchTree<type>::findMax(Node* root) const {
-   Node* curr = root;
+typename SearchTree<type>::Node* SearchTree<type>::findMax(SearchTree<type>::Node* root) const {
+   SearchTree<type>::Node* curr = root;
    
    while (curr && curr->right != nullptr) {
       curr = curr->right;
    }
 
-   // Curr will be the right-most node    
+   // Curr will be the right-most SearchTree<type>::Node    
    // in the tree starting at root.
    return curr;
 }
 
 template<class type>
-SearchTree<type>::Node* SearchTree<type>::findMin(Node* root) {
-   Node<type>* curr = root;
+typename SearchTree<type>::Node* SearchTree<type>::findMin(SearchTree<type>::Node* root) {
+   SearchTree<type>::Node* curr = root;
 
    while (curr && curr->left != nullptr) {
       curr = curr->left;
    }
 
-   // Curr will be the left-most node    
+   // Curr will be the left-most SearchTree<type>::Node    
    // in the tree starting at root.
    return curr;
 }
