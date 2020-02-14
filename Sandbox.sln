@@ -7,7 +7,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BST Practice", "BST Practic
 EndProject
 Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "NodePractice1", "NodePractice1\NodePractice1.njsproj", "{CC34CA7A-24F9-446A-9855-248A9CC502E8}"
 EndProject
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "VuejsApp1", "VuejsApp1\VuejsApp1.njsproj", "{AA7CA3C7-5F88-4359-8C4E-E9A70195CE63}"
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "VueMouseover", "VuejsApp1\VueMouseover.njsproj", "{AA7CA3C7-5F88-4359-8C4E-E9A70195CE63}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
