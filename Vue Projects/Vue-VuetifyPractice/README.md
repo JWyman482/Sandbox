@@ -1,4 +1,5 @@
-# vuecliapp
+# Vue-VuetifyPractice
+
 
 ## Project setup
 ```

@@ -13,7 +13,7 @@
     <ProjectGuid>aa7ca3c7-5f88-4359-8c4e-e9a70195ce63</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>node_modules\@vue\cli-service\bin\vue-cli-service.js</StartupFile>
+    <StartupFile>C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VisualStudio\NodeJs\node_modules\npm\lib\npm.js</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
