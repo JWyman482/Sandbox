@@ -27,6 +27,7 @@
                             Submit
                         </v-btn>
                     </div>
+                {{output}}
                 </div>
                 <table>
                     <tr class="tbl">
@@ -72,11 +73,15 @@
                 const url = 'https://5261puzqsb.execute-api.us-west-2.amazonaws.com/default';
                 //const key = 'szqaVuropf37NRM8CgdhH3ekEynhYaEewYYz36Qb';
 
-                var reqdata = {};
+                var reqdata = {
+                    "action": ""
+                };
 
-                reqdata["action"] = this.tab;
-                reqdata["name"] = this.name;
-                reqdata["id"] = this.itemid;
+                reqdata["action"] = this.items[this.tab].tab.toLowerCase();
+                // reqdata["name"] = this.name;
+                // reqdata["id"] = this.itemid;
+
+                console.log(reqdata);
 
                 const params = {
                     method: "POST",
