@@ -12,28 +12,25 @@
  
             <div class="" style="width: 500px; margin: auto;">
                 <div>
-                    <v-tabs color="green"
-                            v-model="tab"
-                            vertical>
-                        <v-tab v-for="item in items"
-                               :key="item.tab">
+                    <v-tabs color="green" v-model="tab" vertical>
+                        <v-tab v-for="item in items" :key="item.tab">
                             {{item.tab}}
                         </v-tab>
                         <v-tabs-items v-model="tab">
-                            <v-tab-item v-for="item in items"
-                                        :key="item.tab">
-                                <v-card flat>
-                                    <v-card-text></v-card-text>
-                                    <v-textarea :placeholder="item.content"
-                                                v-model="name">
-
-                                    </v-textarea>
+                                <v-card flat style="justify-content: center">
+                                    <v-tab-item v-for="item in items" :key="item.tab">
+                                            <v-textarea :placeholder="item.content" v-model="name"/>
+                                    </v-tab-item>
                                 </v-card>
-                            </v-tab-item>
                         </v-tabs-items>
                     </v-tabs>
+                    <div class="selectWrap">
+                        <v-btn class="btn" color="green" small dark @click="makeReq">
+                            Submit
+                        </v-btn>
+                    </div>
                 </div>
-                {{name}}
+                {{output}}
             </div>
 
         </v-content>
@@ -46,29 +43,7 @@
 
 <script>
 
-    //const url = 'https://5261puzqsb.execute-api.us-west-2.amazonaws.com/default';
-    ////const key = 'szqaVuropf37NRM8CgdhH3ekEynhYaEewYYz36Qb';
-    //const reqdata = {
-    //    "action": "get"
-    //};
-    
-    //const params = {
-    //    method: "POST",
-    //    body: JSON.stringify(reqdata)
-    //};
-    //const serverResponse = document.getElementById("serverResponse");
 
-
-    //fetch(url, params)
-    //    .then(data => {
-    //        return data.json();
-    //    })
-    //    .then(res => {
-    //        console.log(res)
-    //        serverResponse.innerHTML = res;
-    //    })
-
-    //    .catch(error => console.log(error))
 
     export default {
         props: {
@@ -80,43 +55,51 @@
             name: null,
             id: null,
             item_id: null,
+            output: null,
+
             items: [
                 { tab: 'INSERT', content: 'Insert a name for the field' },
                 { tab: 'GET', content: 'Insert a name for the field' },
                 { tab: 'DELETE', content: 'Insert a name for the field' },
                 { tab: 'UPDATE', content: 'Insert a name for the field'},
             ],
-            reqMeths: [
-                {
-                    text: "INSERT",
-                    value: "INSERT"
-                },
-                {
-                    text: "GET",
-                    value: "GET"
-                },
-                {
-                    text: "UPDATE",
-                    value: "UPDATE"
-                },
-                {
-                    text: "DELETE",
-                    value: "DELETE"
-                },
-            ],
-        }),
-        created() {
-            //this.$vuetify.theme.dark = true
-        },
+         }),
+        methods: {
+            makeReq: function () {
+                const url = 'https://5261puzqsb.execute-api.us-west-2.amazonaws.com/default';
+                //const key = 'szqaVuropf37NRM8CgdhH3ekEynhYaEewYYz36Qb';
+
+                let reqdata = {
+                    "action": this.tab,
+                    "name": this.name
+                };
+
+                const params = {
+                    method: "POST",
+                    body: JSON.stringify(reqdata)
+                };
+             
+                fetch(url, params)
+                    .then(data => {
+                        return data.json();
+                    })
+                    .then(res => {
+                        this.output = res;
+                    })
+
+                    .catch(error => this.output = error)
+            }
+        }
     }
 </script>
 
 <style scoped>
     .selectWrap {
-        justify-content: center;
-        align-items: center;
+        display: flex;
+        justify-content: center;     
         margin: auto;
-        
-        
+    }
+    .btn {
+        margin: 10px;
     }
 </style>
