@@ -1,10 +1,7 @@
 <template>
     <v-app id="inspire">
 
-
-        <v-app-bar app
-                   clipped-left>
-       
+        <v-app-bar app clipped-left>
             <v-toolbar-title class="green--text">NoteTaker</v-toolbar-title>
         </v-app-bar>
 
@@ -12,6 +9,7 @@
  
             <div class="" style="width: 500px; margin: auto;">
                 <div>
+                    <span>Click a selection below</span>
                     <v-tabs color="green" v-model="tab" vertical>
                         <v-tab v-for="item in items" :key="item.tab">
                             {{item.tab}}
@@ -30,7 +28,15 @@
                         </v-btn>
                     </div>
                 </div>
-                {{output}}
+                <table>
+                    <tr class="tbl">
+                        <th>ID</th><th>Name</th>
+                    </tr>
+                    <tr class="tbl" v-for="(rows, index) in output" :key="index">
+                        <td>{{rows.item_id}}</td>
+                        <td class="names">{{rows.name}}</td>
+                    </tr>
+                </table>
             </div>
 
         </v-content>
@@ -43,17 +49,14 @@
 
 <script>
 
-
-
     export default {
         props: {
             source: String,
         },
         data: () => ({
-            drawer: null,
+
             tab: null,
             name: null,
-            id: null,
             item_id: null,
             output: null,
 
@@ -69,10 +72,11 @@
                 const url = 'https://5261puzqsb.execute-api.us-west-2.amazonaws.com/default';
                 //const key = 'szqaVuropf37NRM8CgdhH3ekEynhYaEewYYz36Qb';
 
-                let reqdata = {
-                    "action": this.tab,
-                    "name": this.name
-                };
+                var reqdata = {};
+
+                reqdata["action"] = this.tab;
+                reqdata["name"] = this.name;
+                reqdata["id"] = this.itemid;
 
                 const params = {
                     method: "POST",
@@ -101,5 +105,17 @@
     }
     .btn {
         margin: 10px;
+    }
+    .tbl {
+        text-align: center;
+        margin: auto;
+        padding: 10px;
+        /* border: 5px soild red; */
+    }
+    .tbl th, .tbl td {
+        padding: 10px 20px;
+    }
+    .names {
+        text-align: left;
     }
 </style>
