@@ -6,7 +6,7 @@ using namespace std;
 
 int main() {
 
-   vector<int*> arr;
+   vector<const int*> arr;
 
    SearchTree<int> T;
    T.insert(5);
@@ -91,8 +91,9 @@ int main() {
    //T.~BST();
 
    for (auto i : arr) {
-      cout << *i << endl;
+      if (i != nullptr) cout << *i << endl;
    }
 
+   cout << T;
 }
 

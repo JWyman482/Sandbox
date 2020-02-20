@@ -64,7 +64,7 @@ void SearchTree<type>::makeEmpty()
 }
 
 template <class type>
-type* SearchTree<type>::retrieve(const type& c) const 
+const type* SearchTree<type>::retrieve(const type& c) const 
 {
 
    SearchTree<type>::Node* tmp = findHelper(root, c);

@@ -15,7 +15,7 @@ int main()
 
   int answer = 0;
   while (answer != -1) {
-      cout << "Enter number to add. -1 terminates.";
+      cout << "Enter number to add. -1 terminates.\n";
       cin >> answer;
       newList->add(answer);
       newList->display();

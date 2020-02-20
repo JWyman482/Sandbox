@@ -9,12 +9,6 @@ LList::LList()
   tail = nullptr;
 }
 
-/*LList::LList(int values[]) 
-{
-  for (int i = 0; i < howMany; i++)
-    this->add(0);
-}*/
-
 LList::~LList() 
 {
   cout << "Deleting Index: ";
@@ -83,7 +77,7 @@ void LList::display()
 
   while (true)
   {
-    cout << "\nIndex = " << head->index << endl;
+    cout << "\nIndex" << head->index << endl;
     cout << "Value = " << head->value << endl;
     if (head->next == nullptr) cout << "Next Node Index = Null" << endl << endl;
     else cout << "Next Node Index = " << head->next->index << endl << endl;
