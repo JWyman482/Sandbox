@@ -30,15 +30,15 @@ vector<string> parse(string input, string delimiter) {
 
 //-------------------------------------------------------------------
 // Test to show function of parse.
-int main() {
-   
-   string input = "B, 456, M, 1913, 70, Liberty Nickel";
-   string delimiter = ", ";
-
-   vector<string> vec = parse(input, delimiter);
-
-   for (int i = 0; i < vec.size(); i++) {
-      cout << "vec[" << i << "]: " << vec[i] << endl;
-   }
-
-}
+//int main() {
+//   
+//   string input = "B, 456, M, 1913, 70, Liberty Nickel";
+//   string delimiter = ", ";
+//
+//   vector<string> vec = parse(input, delimiter);
+//
+//   for (int i = 0; i < vec.size(); i++) {
+//      cout << "vec[" << i << "]: " << vec[i] << endl;
+//   }
+//
+//}

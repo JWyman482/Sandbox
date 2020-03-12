@@ -139,7 +139,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="hash.cpp" />
     <ClCompile Include="parse.cpp" />
+    <ClCompile Include="readFile.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="testfile.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
