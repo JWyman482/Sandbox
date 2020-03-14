@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="custList.cpp" />
     <ClCompile Include="hash.cpp" />
     <ClCompile Include="parse.cpp" />
     <ClCompile Include="readFile.cpp" />
