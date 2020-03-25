@@ -1,5 +1,7 @@
-This is the first line.
-this is the second.
-third.
-fourth.
-Another line with an endline.
+A, John, 37, 1982
+B, Kara, 35, 1985
+A, Bill, 60, 1950
+A, Jim, 60, 1945
+B, Anita, 60, 1950
+B, Linda, 65, 1948
+A, James, 15, 2003

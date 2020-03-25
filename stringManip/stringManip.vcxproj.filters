@@ -27,6 +27,9 @@
     <ClCompile Include="custList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="routeStorage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="testfile.txt">

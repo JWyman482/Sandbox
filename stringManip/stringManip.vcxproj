@@ -143,6 +143,7 @@
     <ClCompile Include="hash.cpp" />
     <ClCompile Include="parse.cpp" />
     <ClCompile Include="readFile.cpp" />
+    <ClCompile Include="routeStorage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="testfile.txt" />

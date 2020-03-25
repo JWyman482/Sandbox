@@ -324,39 +324,39 @@ private:
 
 
 
-int main ()
-{
-   _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-   Store test;
-   
-   vector<string> newItem = { "M", "1", "1774", "42", "John's Coin" };
-   string newItem2 = "M, 1, 1982, 100, John's other coin";
-
-   cout << newItem[4] << endl;
-   
-
-   //-----------Combining up and testing string entry-----------
-   string tmpStr = newItem[0];
-
-   for (int i = 1; i < newItem.size(); i++) {
-      tmpStr = tmpStr + ", " + newItem[i];
-   }
-   //-----------------------------------------------------------
-
-
-   StoreObject* tmp = test.makeObject(tmpStr);
-   StoreObject* tmp2 = test.makeObject(newItem2);
-
-   tmp->display();
-   tmp2->display();
-
-   //--------------Start of Customer Test-----------------------
-   string newCust = "123, John Wyman";
-   StoreObject* tmp3 = test.makeObject(newCust);
-   StoreObject* tmp4 = test.makeObject("456, Bilbo");
-
-   tmp3->display();
-   tmp4->display();
-   //test.storeObject(*tmp);
-
-}
+//int main ()
+//{
+//   _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+//   Store test;
+//   
+//   vector<string> newItem = { "M", "1", "1774", "42", "John's Coin" };
+//   string newItem2 = "M, 1, 1982, 100, John's other coin";
+//
+//   cout << newItem[4] << endl;
+//   
+//
+//   //-----------Combining up and testing string entry-----------
+//   string tmpStr = newItem[0];
+//
+//   for (int i = 1; i < newItem.size(); i++) {
+//      tmpStr = tmpStr + ", " + newItem[i];
+//   }
+//   //-----------------------------------------------------------
+//
+//
+//   StoreObject* tmp = test.makeObject(tmpStr);
+//   StoreObject* tmp2 = test.makeObject(newItem2);
+//
+//   tmp->display();
+//   tmp2->display();
+//
+//   //--------------Start of Customer Test-----------------------
+//   string newCust = "123, John Wyman";
+//   StoreObject* tmp3 = test.makeObject(newCust);
+//   StoreObject* tmp4 = test.makeObject("456, Bilbo");
+//
+//   tmp3->display();
+//   tmp4->display();
+//   //test.storeObject(*tmp);
+//
+//}
