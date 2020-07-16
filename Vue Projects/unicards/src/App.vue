@@ -7,12 +7,41 @@
 
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
+// TO DO: make a card object with
+//  Unicorns
+//  Upgrades
+//  Downgrades
+//  Magics
+//  Instants*
+//
+// TO DO: make a player object with
+// Stable
+//  Cards
+// Hand
+//  Cards
+//  Visible/invisible flag
+
+// TO DO: make a deck object with
+//  Cards
+
+// TO DO: make a game object with
+//  Players
+//  Deck
+//  CurrentPlayer
 
 export default {
   name: "App",
   components: {
     HelloWorld
+  },
+  // ADDED THIS SECTION
+  data: function() {
+    return {
+      currentPlayer: 0,
+      
+    }
   }
+  // END ADDED SECTION
 };
 </script>
 

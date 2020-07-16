@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Inherit", "Inherit\Inherit.vcxproj", "{E55D5F4F-680A-43D1-8C4C-26D9E7B9B7FB}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "stringManip", "stringManip\stringManip.vcxproj", "{1047AFDD-ABBE-48C3-9CE5-05EA2B92506D}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tools", "stringManip\stringManip.vcxproj", "{1047AFDD-ABBE-48C3-9CE5-05EA2B92506D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "unicardsCpp", "unicardsCpp\unicardsCpp.vcxproj", "{F88AB99E-BCE8-470B-A9E1-E057EAD89F24}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,14 @@ Global
 		{1047AFDD-ABBE-48C3-9CE5-05EA2B92506D}.Release|x64.Build.0 = Release|x64
 		{1047AFDD-ABBE-48C3-9CE5-05EA2B92506D}.Release|x86.ActiveCfg = Release|Win32
 		{1047AFDD-ABBE-48C3-9CE5-05EA2B92506D}.Release|x86.Build.0 = Release|Win32
+		{F88AB99E-BCE8-470B-A9E1-E057EAD89F24}.Debug|x64.ActiveCfg = Debug|x64
+		{F88AB99E-BCE8-470B-A9E1-E057EAD89F24}.Debug|x64.Build.0 = Debug|x64
+		{F88AB99E-BCE8-470B-A9E1-E057EAD89F24}.Debug|x86.ActiveCfg = Debug|Win32
+		{F88AB99E-BCE8-470B-A9E1-E057EAD89F24}.Debug|x86.Build.0 = Debug|Win32
+		{F88AB99E-BCE8-470B-A9E1-E057EAD89F24}.Release|x64.ActiveCfg = Release|x64
+		{F88AB99E-BCE8-470B-A9E1-E057EAD89F24}.Release|x64.Build.0 = Release|x64
+		{F88AB99E-BCE8-470B-A9E1-E057EAD89F24}.Release|x86.ActiveCfg = Release|Win32
+		{F88AB99E-BCE8-470B-A9E1-E057EAD89F24}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
