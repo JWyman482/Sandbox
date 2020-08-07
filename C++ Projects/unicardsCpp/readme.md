@@ -2,7 +2,7 @@
 # Unicards
 
 ## Summary
-Unicards is a game absolutely nothing like [Unstable Unicorns]. (https://unstableunicorns.fandom.com/wiki/Unstable_Unicorns_Wiki "Nothing like this.")
+Unicards is a game absolutely nothing like [Unstable Unicorns](https://unstableunicorns.fandom.com/wiki/Unstable_Unicorns_Wiki "Nothing like this.").
 
 Each player attempts to collect 7 unicorn cards for their 'stable.' Stables can have upgrade or downgrade cards attached to them which affect the stable. Unicorn cards themselves may have powers that affect other players in some way.
 
