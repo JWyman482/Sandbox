@@ -33,7 +33,7 @@ class Power {
 
 class Card {
 	string name;
-	string imgPath;
+	string img;
 	Player* owner;
 	// Type codes:
 	// m = magic

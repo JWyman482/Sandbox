@@ -12,25 +12,25 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.8.7",
+    "@babel/polyfill": "^7.10.4",
     "@mdi/font": "^3.6.95",
     "roboto-fontface": "*",
     "vue": "^2.6.11",
-    "vuetify": "^2.2.21"
+    "vuetify": "^2.3.4"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.3.1",
+    "@vue/cli-plugin-babel": "^4.4.6",
     "@vue/cli-plugin-eslint": "3.0.4",
-    "@vue/cli-service": "^4.3.1",
+    "@vue/cli-service": "^4.4.6",
     "deepmerge": "^4.2.2",
     "eslint": "5.6.0",
     "eslint-plugin-vue": "4.7.1",
-    "fibers": "^4.0.2",
-    "sass": "^1.26.3",
+    "fibers": "^4.0.3",
+    "sass": "^1.26.10",
     "sass-loader": "^8.0.2",
-    "vue-cli-plugin-vuetify": "^2.0.5",
+    "vue-cli-plugin-vuetify": "^2.0.6",
     "vue-template-compiler": "2.5.17",
-    "vuetify-loader": "^1.4.3"
+    "vuetify-loader": "^1.6.0"
   },
   "eslintConfig": {
     "root": true,
