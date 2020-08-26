@@ -1,0 +1,19 @@
+{
+  "name": "jstest1",
+  "version": "0.0.0",
+  "description": "Testing for JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JWyman482/Sandbox.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JWyman482/Sandbox/issues"
+  },
+  "homepage": "https://github.com/JWyman482/Sandbox#readme"
+}

@@ -21,6 +21,14 @@ struct Game {
 	int currentPlayer = 0;
 	int currentPhase = 0;
 
+	int handLimit = 5;
+	int winCondition = 7;
+
+	bool skipBeg = false,
+		skipDraw = false,
+		skipAct = false,
+		skipEnd = false;
+
 	// Load card information into master deck. This can be a
 	// persistant file or array of JSON objects later. A deck file. 
 	bool buildDeck() {
@@ -40,14 +48,14 @@ struct Game {
 
 
 		// Fill in the neighs and super neigh
-		for (int i = 111; i <= 125; i++) {
-			if (i != 125) {
+		for (int i = 112; i <= 126; i++) {
+			if (i != 126) {
 				Card temp("Neigh", "PATH", "Instantly stop something", this);
 				deck.push_back(temp);
 			}
-			else if (i == 125) {
+			else if (i == 126) {
 				Card temp("Super Neigh", "PATH", "Instantly stop something and can't be stopped", this);
-					deck.push_back(temp);
+				deck.push_back(temp);
 			}
 		}
 
@@ -102,11 +110,11 @@ struct Game {
 		}
 		if (type == "downgrade") {
 			min = 105;
-			max = 110;
+			max = 111;
 		}
 		if (type == "instant") {
-			min = 111;
-			max = 125;
+			min = 112;
+			max = 126;
 		}
 		for (int i = 0; i < cards.size() - 1; i++) {
 			if (cards[i] >= min && cards[i] <= max) {
@@ -114,6 +122,12 @@ struct Game {
 			}
 		}
 		return result;
+	}
+
+	void displayTable() {
+		for (int i = 0; i < players.size(); i++) {
+			players[i].stable.show();
+		}
 	}
 
 };

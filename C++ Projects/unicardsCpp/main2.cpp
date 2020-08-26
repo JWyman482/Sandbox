@@ -7,40 +7,45 @@
 
 using namespace std;
 
-
-
-// 1. Choose # of players
-// 2. Choose babies
-// 3. Shuffle
-// 4. Deal cards(based on # of players) into hand
-// 5. Determine who starts
-// 6. Loop(until someone gets win # of unicards
-// 7. Foreach player
-//	7a. Activate any beginning of turn powers
-//	7b. Ask about optional card powers
-//  7c.	Either draw two and skip to the next player OR Draw 1
-//	7d. Choose and Play a card
-//		7d1. Pause for neighs
-//		7d2. if unicorn, check for win cond
-//		7d3. execute card action (draw, discard, sacrifice, destroy, steal)
-//		7d4. check for win cond.
-//		7d5. check for hand limit and discard down
-
-// Game State
-// #/names of players
-// each player
-	// hand
-	// stable
-// deck
-// draw pile
-// discard pile
-// nursery
-// currentPlayer
-
 int main() {
 	Game g;
 
 	while (true) {
+		// Display nanny cammed hands
+		for (auto player : g.players) {
+			if (player.nannyCam) player.showHand();
+			cout << endl;
+		}
+
 		g.currentPlayer = ++g.currentPlayer % g.players.size();
+		Player* player = &g.players[g.currentPlayer];
+
+		// Beginning of turn phase
+		if (!g.skipBeg) {
+			cout << player->name << "'s Beginning of Turn Phase *********\n";
+			player->stable.onTurn();
+		}
+
+		// Draw phase
+		if (!g.skipDraw && g.drawPile.size() > 0) {
+			cout << player->name << "'s Draw Phase *********\n";
+			for (int i = 0; i < player->drawPerTurn; i++) {
+				player->hand.push_back(g.drawPile.back());
+				g.drawPile.pop_back();
+			}
+		}
+		
+		// Action phase
+		if (!g.skipAct) {
+
+		}
+		
+		// End of turn phase
+		if (!g.skipEnd) {
+			cout << player->name << "'s End of Turn Phase *********\n";
+			while (player->hand.size() > player->handLimit) {
+				player->discard();
+			}
+		}
 	}
 }

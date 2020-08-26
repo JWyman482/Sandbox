@@ -9,23 +9,45 @@ using namespace std;
 
 class Player {
 public: 
-	vector<int> hand;
-	Stable stable;
 	string name;
+	Stable stable;
+	vector<int> hand;
+
 	int drawPerTurn = 1;
 	int discardPerTurn = 0;
+	int playPerTurn = 1;
+	int handLimit = g->handLimit;
+	bool nannyCam = false;
 
-	vector<int>onEnterTgts;
+	/*vector<int>onEnterTgts;
 	vector<int>onExitTgts;
 	vector<int>onSacrTgts;
 	vector<int>onDestTgts;
-	vector<int>onTurnTgts;
+	vector<int>onTurnTgts;*/
 
 	Game* g = nullptr;
 
-	bool draw();
+	bool draw() {
+		
+	}
 	bool play();
 	bool discard();
+	bool sacrifice() {
+		stable.show();
+
+		int tgt = -1;
+		while (tgt < 0 || tgt > 64) {
+			cout << "\nChoose a unicorn to sacrifice:  ";
+			// TODO add int validation
+			cin >> tgt;
+			tgt = g->searchCards(stable.unicorns, tgt);
+		} // Unicorn in this stable picked
+
+		if (!g->deck[tgt].canSacrifice) return false;
+		stable.remove(tgt);
+		g->deck[tgt].origOwner = nullptr;
+		g->discard.push_back(tgt);
+	}
 	bool sacrifice(int tgt) {
 
 		//int temp;
@@ -68,10 +90,46 @@ public:
 
 	};
 	bool steal();
-	bool destroy(int tgt) {
+	bool destroy() {
+		// Contains the unicorns in play
+		vector<int> options;
 
+		// Print table
+		for (int i = 0; i < g->players.size(); i++) {
+			
+			// Skip the current player
+			if (g->players[i].name == name) continue;
+
+			cout << g->players[i].name << "'s unicorns: \n";
+			for (int unicorn : g->players[i].stable.unicorns) {
+				g->deck[unicorn].show();
+				options.push_back(unicorn);
+			}
+			cout << endl;
+		}
+
+		// Prompt the user until they choose one of the options
+		int tgt = -1;
+		while (g->searchCards(options, tgt) < 0) {
+			cout << "\nChoose a unicorn to destroy:  ";
+			// TODO add int validation
+			cin >> tgt;
+		}
+
+		// Run the destroy action on the card
+		if (tgt > 0) {
+			g->deck[tgt].onDest();
+			return true;
+		}
+		else return false;
 	};
 
-	bool showCards();
+	bool showHand() {
+		cout << name << "'s hand ***********************\n";
+		for (int card : hand) {
+			cout << "(#" << card << ") ";
+			g->deck[card].show();
+		}
+	};
 
 };
