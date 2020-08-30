@@ -3,7 +3,7 @@ var app = new Vue({
     data: {
         product: 'socks',
         description: 'white socks',
-        image: '../../../../Pictures/Camera Roll/Me and Ella.jpg'
+        image: '../../../../../Pictures/Camera Roll/Me and Ella.jpg'
     }
 });
 
@@ -17,5 +17,10 @@ let killerRabbit = Object.create(protoRabbit);
 killerRabbit.type = "killer";
 killerRabbit.speak("Skreeee!!");
 
-
+let testStr = "John";
+let testObj = {};
+// testObj[testStr];
+// console.log(testObj).testStr;
+console.log(testObj[testStr]);
+console.log(testObj[testStr]==null);
 

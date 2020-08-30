@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class = "imgdiv" @mouseover = "hover=!hover" @mouseleave = "hover=!hover">
+        <div class = "img" @mouseover = "hover=!hover" @mouseleave = "hover=!hover">
             <img v-if="hover" :src="image1" alt="Pic of me"/>
             <img v-else :src="image2" alt="Pic of me and ella" />
         </div>
@@ -22,7 +22,6 @@
 
 <style scoped>
     img {
-     
         height: 100%;
         width: 100%;
     }

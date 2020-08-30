@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <Home msg="Hello world!" />
-        <Mouseimage></Mouseimage>
+        <Mouseimage />
     </div>
 </template>
 
