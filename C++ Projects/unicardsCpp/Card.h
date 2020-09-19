@@ -29,32 +29,20 @@ public:
 	//bool onDest = false;
 
 	// The functions below are all in children
-	void onEnterAction() {};
-	void onTurnAction() {};
-	void onExitAction() {};
-	void onSacrAction() {};
-	void onDestAction() {};
+	virtual void onEnterAction() {};
+	virtual void onTurnAction() {};
+	virtual void onExitAction() {};
+	virtual void onSacrAction() {};
+	virtual void onDestAction() {};
 
 	void onEnter() {
 		if (!isActive) return;
 		cout << name << "'s onEnter triggered.\n";
 	};
 	void onTurn() {
-		if (!isActive) return;
-
-		// If the power is optional
-		if (onTurnOpt) {
-			show();
-			cout << "Would you like to use this power (y/n)? ";
-			// TODO add char validation
-			char decision;
-			cin >> decision;
-
-			if (decision != 'y') return;
-		}
-
-		onTurnAction();
+		if (willUsePower())	onTurnAction();
 	};
+	
 	void onExit() { 
 		if (!isActive) return;
 		onExitAction();
@@ -67,6 +55,21 @@ public:
 		cout << name << endl;
 		cout << desc << endl;
 		cout << endl;
+	}
+
+	bool willUsePower() {
+		if (!isActive) return false;
+
+		// If the power is optional
+		if (onTurnOpt) {
+			show();
+			cout << "Would you like to use this power? 1 = y, 0 = n: ";
+			// TODO add char validation
+			bool decision;
+			cin >> decision;
+			return decision;
+		}
+		else return true;
 	}
 
 };
