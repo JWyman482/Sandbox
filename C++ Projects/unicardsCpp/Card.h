@@ -39,6 +39,7 @@ public:
 		if (!isActive) return;
 		cout << name << "'s onEnter triggered.\n";
 	};
+	
 	void onTurn() {
 		if (willUsePower())	onTurnAction();
 	};
