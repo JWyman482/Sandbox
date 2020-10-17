@@ -1,7 +1,3 @@
-print("Hello World")
+phrase = "hello world"
 
-i = 2
-while i != 3:
-    print(i)
-    i = i + 1
-print(i)
+print(phrase)
