@@ -5,22 +5,25 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Timer</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="icon" type = "image/png" href="favicon.png">
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
 </head>
 <body>
     
     <div class = "inps"> 
-        Repeat: <input id = "rep" type="checkbox"><br> 
-        Minutes: <input id = "amt" type="number"><br>
+        Repetitions: <input id = "rep" type="number" min="1" placeholder="1"><br>
+        Minutes: <input id = "amt" type="number" min="0"><br>
     </div>
 
-    <button onclick="startTimer()" type="button">Start</button>
+    <audio id="ding"></audio>
+    <button onclick="startTimer()">Start</button>
+    <button onclick="stopPushed=true">Stop</button>
     
-    <div class = "out" id="demo"></div>
+    <div class = "out" id="output"></div>
     <div class = "out" id="counter"></div>
-    <audio id="ding" src="ding3.wav"></audio>
+    <!-- <audio id="ding" src="ding3.wav"></audio> -->
     <script src='main.js'></script>
 </body>
 </html>

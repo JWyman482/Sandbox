@@ -1,46 +1,73 @@
-// Set the date we're counting down to
-// var countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
-var repeat = false;
-
-document.getElementById("rep").addEventListener("change", ()=>{
-    repeat=!repeat;
-    console.log(repeat);
-});
+var stopPushed = false;
+var isRunning = false;
 
 function startTimer() {
-    // Update the count down every 1 second
-    
-    var ttgt = document.getElementById("amt").value;
-    var tgt = ttgt * 60;
 
+    if (isRunning) return;
+    
+    isRunning = true;    
+    stopPushed = false;
+
+    var audio = document.getElementById("ding");
+    var output = document.getElementById("output");
+    var cnt = document.getElementById("counter");
+    var timeMins = document.getElementById("amt").value;
+    var repeat = document.getElementById("rep").value;
+
+    // Grab control for mobile playback of sound
+    audio.play();
+
+    // Set source of sound
+    audio.src = 'ding3.wav';
+
+    var timeSecs = timeMins * 60;
     var counter = 0;
-
-    var x = setInterval(function() {
-        // console.log(tgt);
-        
-
-        mins = Math.floor(tgt / 60);
-        secs = tgt % 60;
-
-        // Display the result in the element with id="demo"
-        document.getElementById("demo").style = "color: black";
-        document.getElementById("demo").innerHTML = "Time remaining: " + mins + ":" + secs;
-        tgt--;
-        // If the count down is finished, write some text
-        if (tgt < 0 && !repeat) {
-            clearInterval(x);
-            document.getElementById("demo").innerHTML = "EXPIRED";
-            document.getElementById("demo").style = "color: red";
-            document.getElementById("ding").play()
-        }
-        else if (tgt < 0 && repeat) {
-            counter++;
-            document.getElementById("counter").innerHTML = "Counter = " + counter;
-            document.getElementById("ding").play()
-            tgt = ttgt * 60;
-        }
-        
-    }, 1000);
-       
     
+    // Reset display
+    output.innerHTML = "";
+    cnt.innerHTML = "";
+    output.style = "color: black";
+
+    var x = setInterval(function () {
+        
+        // If stop button is pushed
+        if (stopPushed) {
+            clearInterval(x);
+            output.innerHTML = "STOPPED";
+            output.style = "color: green";
+            stopPushed = false;
+            isRunning = false;
+            return;
+        }
+
+        // Parse seconds into mins and secs
+        mins = Math.floor(timeSecs / 60);
+        secs = timeSecs % 60;
+    
+        // Display the time remaining in the element with id="output"
+        output.innerHTML = "Time remaining: " + mins + ":" + secs;
+        timeSecs--;
+
+        // If the count down is finished, write expired in red
+        if (timeSecs < 0 && repeat == 1) {
+            clearInterval(x);
+            output.style = "color: red";
+            output.innerHTML = "EXPIRED";
+            if (counter > 0) {
+                counter++;
+                cnt.innerHTML = "Counter = " + counter;
+            }
+            audio.play()
+            isRunning = false;
+        }
+        // If repeat is selected, a counter appears with the current count
+        // and the timer is reset.
+        else if (timeSecs < 0 && repeat > 1) {
+            counter++;
+            cnt.innerHTML = "Counter = " + counter;
+            audio.play()
+            timeSecs = timeMins * 60;
+            repeat--;
+        }
+    }, 1000);
 }
