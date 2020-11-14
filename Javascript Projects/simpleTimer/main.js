@@ -8,8 +8,8 @@ var cnt = document.getElementById("counter");
 function startTimer() {
     if (isRunning) return;
 
-    // output.innerHTML = "";
-    // cnt.innerHTML = "";
+    output.innerHTML = "";
+    cnt.innerHTML = "";
     output.style = "color: black";
     
     isRunning = true;    
@@ -68,6 +68,7 @@ function startTimer() {
                 counter++;
                 cnt.innerHTML = "Counter = " + counter;
             }
+            audio.src="done.wav"
             audio.play()
             isRunning = false;
             return;
