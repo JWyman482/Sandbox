@@ -491,3 +491,4 @@ dmypy.json
 cython_debug/
 
 *.sln
+Python Projects/testenv1/*
