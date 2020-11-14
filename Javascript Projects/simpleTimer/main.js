@@ -1,16 +1,20 @@
 var stopPushed = false;
 var isRunning = false;
 
-function startTimer() {
+var audio = document.getElementById("ding");
+var output = document.getElementById("output");
+var cnt = document.getElementById("counter");
 
+function startTimer() {
     if (isRunning) return;
+
+    // output.innerHTML = "";
+    // cnt.innerHTML = "";
+    output.style = "color: black";
     
     isRunning = true;    
     stopPushed = false;
-
-    var audio = document.getElementById("ding");
-    var output = document.getElementById("output");
-    var cnt = document.getElementById("counter");
+    
     var timeMins = document.getElementById("amt").value;
     var repeat = document.getElementById("rep").value;
 
@@ -24,9 +28,6 @@ function startTimer() {
     var counter = 0;
     
     // Reset display
-    output.innerHTML = "";
-    cnt.innerHTML = "";
-    output.style = "color: black";
 
     var x = setInterval(function () {
         
@@ -44,6 +45,16 @@ function startTimer() {
         mins = Math.floor(timeSecs / 60);
         secs = timeSecs % 60;
     
+        function checkTime(i) {
+            if (i < 10) {
+              i = "0" + i;
+            }
+            return i;
+        }
+
+        mins = checkTime(mins);
+        secs = checkTime(secs);
+
         // Display the time remaining in the element with id="output"
         output.innerHTML = "Time remaining: " + mins + ":" + secs;
         timeSecs--;
@@ -59,6 +70,7 @@ function startTimer() {
             }
             audio.play()
             isRunning = false;
+            return;
         }
         // If repeat is selected, a counter appears with the current count
         // and the timer is reset.
