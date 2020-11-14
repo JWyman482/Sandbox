@@ -4,7 +4,9 @@ Designed to help with a pomodoro-like technique.
 
 ## Input
 **Repetitions**: Integer. Number of times you'd like the timer to repeat
+
 **Minutes**: Float. Number of minutes you'd like to count down. Can handle fractions.
+
 ***Buttons***: Start begins the timer. Pressing start again while a timer runs does nothing. Stop will stop the timer.
 
 ## Output
