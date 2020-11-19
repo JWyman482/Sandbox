@@ -66,9 +66,6 @@ export default {
     /* border: 1px solid green */
 }
 
-.addTask {
-    /* min-width: 50%; */
-}
 .textInput {
     /* width: 100%; */
     padding: 10px;
