@@ -1,5 +1,5 @@
 <template>
-<div class="task" :class = "{done : isDone}">
+<div class="task" :class = "{done : isDone}" v-if="!isDone || (showTask && isDone)">
     <div class = "btn"><input type="checkbox" v-model="isDone" v-on:change="playAudio(sounds)" /></div>
     <div class = "taskLeft">
         <div class = "label"><strong>{{id}}</strong></div>
@@ -14,7 +14,8 @@ export default {
     props: [
         'id',
         'text',
-        'sounds'
+        'sounds',
+        'showTask'
     ],
     data() {
         return {
@@ -47,7 +48,7 @@ export default {
     .task:hover {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
-    
+
     .taskLeft {
         display: flex;
         flex-wrap: nowrap;
