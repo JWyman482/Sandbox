@@ -1,5 +1,6 @@
 <template>
     <div class = "taskcontainer">
+        <h1>Task List</h1>
         <Task 
             v-for="(task, index) in tasks" 
             :id="index+1" 
