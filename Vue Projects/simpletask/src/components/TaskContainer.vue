@@ -20,8 +20,6 @@
 <script>
 import Task from './Task.vue'
 
-
-
 var tasks = []
 
 var sounds = {
