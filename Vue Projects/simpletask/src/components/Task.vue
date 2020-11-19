@@ -39,7 +39,6 @@ export default {
     .task {
         display: flex;
         flex-flow: row nowrap;
-        /* justify-content: space-between; */
         margin: 8px;
         padding: 2px;
         border: 1px solid lightgray;
@@ -62,8 +61,6 @@ export default {
 
     .btn {
         align-self: center;
-        /* height: 100%; */
-        /* border: 1px solid red; */
     }
 
     button {

@@ -18,20 +18,7 @@
 <script>
 import Task from './Task.vue'
 
-var tasks = [
-    // {
-    //     id: 1,
-    //     text: "The first task is a test to see if the text will run off the edge at some point or what it will do."
-    // },
-    // {
-    //     id: 2,
-    //     text: "The second"
-    // },
-    // {
-    //     id: 3,
-    //     text: "The third"
-    // },
-]
+var tasks = []
 
 var sounds = {
     'ClickOn': 'http://soundbible.com/mp3/Click On-SoundBible.com-1697535117.mp3',
@@ -64,11 +51,9 @@ export default {
     flex-flow: column nowrap;
     max-width: 800px;
     margin: 0 auto;
-    /* border: 1px solid green */
 }
 
 .textInput {
-    /* width: 100%; */
     padding: 10px;
     margin: 10px;
     border: 2px solid green;
