@@ -54,7 +54,8 @@ export default {
     display: flex;
     flex-flow: row wrap;
     /* align-items: center; */
-    border: 1px solid black
+    border: 1px solid black;
+    background-color: whitesmoke;
   }
 
 </style>

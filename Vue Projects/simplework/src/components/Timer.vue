@@ -59,15 +59,11 @@
                 // Grab control for mobile playback of sound
                 audio.play();
                 
-                // Set source of sound
-                //var ding = new Audio('./ding3.wav');
-
                 var timeSecs = this.timeMins * 60;
                 var counter = 0;
                 var vm = this;
 
-                // Reset display
-                
+                // Reset display                
                 var x = setInterval(function () {
                     
                     
@@ -101,11 +97,12 @@
                             counter++;
                             vm.cnt = "Counter = " + counter;
                         }
-                        //var done = new Audio('http://soundbible.com/mp3/Click On-SoundBible.com-1697535117.mp3')
+                        
                         vm.done.play()
                         vm.isRunning = false;
                         return;
                     }
+
                     // If repeat is selected, a counter appears with the current count
                     // and the timer is reset.
                     else if (timeSecs < 0 && vm.repeat > 1) {
@@ -143,6 +140,11 @@
     button {
         margin: 10px;
         width: 100px;
+    
+    }
+
+    button:hover {
+        /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
     }
 
     .out {
