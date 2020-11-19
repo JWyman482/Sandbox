@@ -24,6 +24,9 @@ export default {
     },
     methods: {
         playAudio(sounds) {
+            var dummy = new Audio();
+            dummy.play();
+            
             var clickOn = new Audio(sounds['ClickOn']);
             var clickOff = new Audio(sounds['ClickOff']);
 
